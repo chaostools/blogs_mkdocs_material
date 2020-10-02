@@ -4,23 +4,124 @@ site_author: Ansh Sachdeva(root-ansh)
 site_url: https://root-ansh.github.io/curioustools/ 
 
 
+
+theme:
+    name: material
+    palette:
+        primary: 'white'
+        accent: 'green'
+
+    feature:
+        - navigation.tabs 
+ 
+    language: 'en'    
+    extra:
+        search:
+            language: 
+                - 'en'
+            seperator: '[\s\-\.]+'
+
+    logo: assets/logo/logo.svg
+    favicon: 'assets/images/favicon.ico'
+   
+     
+      
+markdown_extensions:
+    - meta
+    - markdown.extensions.admonition
+    - pymdownx.superfences
+    - pymdownx.emoji
+      
+extra:
+    disqus: curioustools 
+    social:
+        - icon: fontawesome/brands/github
+          link: https://github.com/root-ansh
+
+        - icon: fontawesome/brands/twitter
+          link: https://twitter.com/root_ansh
+        - icon: fontawesome/brands/linkedin
+          link: https://www.linkedin.com/in/anshsachdevawork/
+
+
+
 copyright: Copyright &copy; 2019 <a href="https://www.linkedin.com/in/anshsachdevaprofessional/">Ansh Sachdeva</a>
 
 
-theme:
-  name: material
-  palette:
-        primary: 'white'
-        accent: 'green'
-  
-  
-extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/root-ansh
+nav:
+    - About Me: index.md
     
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/root_ansh
-    - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/in/anshsachdevawork/
-   
+    - Education Details:
+        - Education Details: tab_edu/edu_details.md
+        
+    - Work Experience: 
+        - Work Experience: tab_work_exp/work_exp.md
+
+    - Portfolio:
+        - Portfolio: tab_projects/project_summary.md
+
+    - Notes:  
+        - Introduction : tab_blogs/blog_summary.md  
+        - Android :   
+            - Basics:    
+                - Android Fundamentals :  
+                    - Part1, The Architecture: tab_blogs/android/basics/af1_the_architecture.md  
+                    - Part2, Parts of an App(inc): tab_blogs/android/basics/af2_parts_of_an_app.md  
+              
+            - MobileAds:  
+                - tab_blogs/android/mobile_ads_1.md  
+                
+            - Firebase: 
+                - Realtime DB: tab_blogs/firebase/RealtimeDb.md  
+            
+            - Networking:  
+                - GetPost:  
+                    - Part1, basics: tab_blogs/android/networking/networking_get_post_basics.md  
+                    - Part2, The native way: tab_blogs/android/networking/networking_get_post_native.md  
+                    - Part3, Volley: tab_blogs/android/networking/networking_get_post_volley.md  
+                    - Part4, OkHttp: tab_blogs/android/networking/networking_get_post_okhttp.md  
+                    - Part4.1, GSON: tab_blogs/android/networking/networking_get_post_gson.md  
+                    - Part5, Retrofit:  tab_blogs/android/networking/networking_get_post_retrofit.md  
+
+                - Image Downloading: tab_blogs/android/networking/image_load_overview.md
+                    
+                    
+                - Shimmer and progress(inc)⏏:  https://codinginfinite.com/facebook-shimmer-effect-android-example/ 
+                
+            
+            - VideoPlayer:
+                - tab_blogs/android/exoplayer_p1.md
+            
+            - ZZZ_Misc:    
+                -  Fasting Up Android Studio: tab_blogs/android/android_studio_settings.md
+                - tab_blogs/android/enums_and_intDefs.md
+                - Debugging basics: tab_blogs/misc/debugging_basics.md
+                
+                
+        - Kotlin:
+            - Intro : tab_blogs/kotlin/intro.md
+            - Hello Kotlin⏏: https://docs.google.com/document/d/11-pLCn_f7aYuah22_XoBvGs_T3BHyh36vrq-3sCplWU/edit?usp=sharing
+            - Installing Kotlin⏏ : https://docs.google.com/document/d/1EQL9BGWNtX6u3EU4ETkfMVjlDqyurRU-4lBU-Z9WOzE/edit?usp=sharing
+            - Basic Syntax ⏏ : https://docs.google.com/document/d/1ZKZcyGYruaPIRJzqqN1jmN-aZmXUM5VJ_bh91amOmGM/edit?usp=sharing
+            - OOPS ⏏ : https://drive.google.com/file/d/1uwJAMBusJ6IRo6M1g_n3ggRLbNj2dLtL/view?usp=sharing 
+            - OOPS Continued ⏏ : https://drive.google.com/file/d/1VhV0ZD2qeZSEZzd3qp1_0ZO5AH9lu8XA/view?usp=sharing
+            - Scopes and nullability ⏏ : https://drive.google.com/file/d/11SgtbswHAwc9N82GQ1ET1Pazh11WD5hf/view?usp=sharing
+            
+        - Git:
+            - Introduction(inc): tab_blogs/git/intro.md
+        
+        - Web:
+            - Mkdocs: tab_blogs/web/mkdocs/basic_syntax.md  
+            
+        - Google Assistant and AI :
+            - Introduction(inc): tab_blogs/assistant/404.md
+                
+        - BlockChain:
+            - Public and Private Keys: tab_blogs/blockchain/public_and_private_key.md
+        
+        - Other Blogs⏏: https://www.medium.com/@anshsachdevaprofessional/  
+        - Other Blogs2⏏: https://curioustools.blogspot.com/   
+        
+        - Other Blogs3(NEW)⏏: https://www.reddit.com/r/curioustools/ 
+        
+        

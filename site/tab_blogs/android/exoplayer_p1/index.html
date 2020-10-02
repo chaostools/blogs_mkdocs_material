@@ -1,0 +1,1525 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Google certified Associate Android Dev">
+      
+      
+        <link rel="canonical" href="https://root-ansh.github.io/curioustools/tab_blogs/android/exoplayer_p1/">
+      
+      
+        <meta name="author" content="Ansh Sachdeva(root-ansh)">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.0.1">
+    
+    
+      
+        <title>Exoplayer - Curioustools</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.38780c08.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f72e892.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="green">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#exoplayer" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://root-ansh.github.io/curioustools/" title="Curioustools" class="md-header-nav__button md-logo" aria-label="Curioustools">
+      
+  <img src="../../../assets/logo/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Curioustools
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Exoplayer
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://root-ansh.github.io/curioustools/" title="Curioustools" class="md-nav__button md-logo" aria-label="Curioustools">
+      
+  <img src="../../../assets/logo/logo.svg" alt="logo">
+
+    </a>
+    Curioustools
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Hello." class="md-nav__link">
+      Hello.
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Tab blogs
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Tab blogs" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Tab blogs
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blog_summary/" title="Blog summary" class="md-nav__link">
+      Blog summary
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2" checked>
+    
+    <label class="md-nav__link" for="nav-2-2">
+      Android
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Android" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-2">
+        <span class="md-nav__icon md-icon"></span>
+        Android
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../android_studio_settings/" title="Fasting Up Android Studio" class="md-nav__link">
+      Fasting Up Android Studio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../enums_and_intDefs/" title="Enums and @IntDefs" class="md-nav__link">
+      Enums and @IntDefs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../exoplayer_classes/" title="Exoplayer classes" class="md-nav__link">
+      Exoplayer classes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Exoplayer
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" title="Exoplayer" class="md-nav__link md-nav__link--active">
+      Exoplayer
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#steps-to-implement" class="md-nav__link">
+    Steps to implement
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-bare-minimmums" class="md-nav__link">
+    the Bare Minimmums.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extras" class="md-nav__link">
+    Extras
+  </a>
+  
+    <nav class="md-nav" aria-label="Extras">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exo-resources" class="md-nav__link">
+    exo resources :
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-exo-player-resources" class="md-nav__link">
+    non exo player resources
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../misc_random_learnings/" title="Miscallanous : Random learnings in android" class="md-nav__link">
+      Miscallanous : Random learnings in android
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mobile_ads_1/" title="The World of mobile ads (Part1)" class="md-nav__link">
+      The World of mobile ads (Part1)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pia_intro/" title="Patterns in android : Introduction" class="md-nav__link">
+      Patterns  in android : Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-2-8" type="checkbox" id="nav-2-2-8">
+    
+    <label class="md-nav__link" for="nav-2-2-8">
+      Basics
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Basics" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-2-8">
+        <span class="md-nav__icon md-icon"></span>
+        Basics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../basics/af1_the_architecture/" title="Android Fundamentals : Part 1 ,The architecture" class="md-nav__link">
+      Android Fundamentals : Part 1 ,The architecture
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../basics/af2_parts_of_an_app/" title="Android Fundamentals : Parts of an app" class="md-nav__link">
+      Android Fundamentals : Parts of an app
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-2-9" type="checkbox" id="nav-2-2-9">
+    
+    <label class="md-nav__link" for="nav-2-2-9">
+      Networking
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Networking" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-2-9">
+        <span class="md-nav__icon md-icon"></span>
+        Networking
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../networking/image_load_overview/" title="Networking Basics : Image Loading" class="md-nav__link">
+      Networking Basics : Image Loading
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../networking/networking_get_post_basics/" title="Networking Basics : Making a Get Post Connection(Theory)" class="md-nav__link">
+      Networking Basics : Making a Get Post Connection(Theory)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../networking/networking_get_post_gson/" title="Networking Basics : Making a Get Post Connection(gson)" class="md-nav__link">
+      Networking Basics : Making a Get Post Connection(gson)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../networking/networking_get_post_native/" title="Networking Basics : Making a Get Post Connection(Native Way)" class="md-nav__link">
+      Networking Basics : Making a Get Post Connection(Native Way)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../networking/networking_get_post_okhttp/" title="Networking Basics : Making a Get Post Connection(Okhttp)" class="md-nav__link">
+      Networking Basics : Making a Get Post Connection(Okhttp)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../networking/networking_get_post_retrofit/" title="Networking Basics : Making a Get Post Connection(Volley)" class="md-nav__link">
+      Networking Basics : Making a Get Post Connection(Volley)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../networking/networking_get_post_volley/" title="Networking Basics : Making a Get Post Connection(Volley)" class="md-nav__link">
+      Networking Basics : Making a Get Post Connection(Volley)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
+      Assistant
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Assistant" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        <span class="md-nav__icon md-icon"></span>
+        Assistant
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../assistant/404/" title="4004" class="md-nav__link">
+      4004
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4">
+    
+    <label class="md-nav__link" for="nav-2-4">
+      Blockchain
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Blockchain" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-4">
+        <span class="md-nav__icon md-icon"></span>
+        Blockchain
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blockchain/public_and_private_key/" title="Public and Private Keys" class="md-nav__link">
+      Public and Private Keys
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-5" type="checkbox" id="nav-2-5">
+    
+    <label class="md-nav__link" for="nav-2-5">
+      Firebase
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Firebase" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-5">
+        <span class="md-nav__icon md-icon"></span>
+        Firebase
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../firebase/RealtimeDb/" title="Firebase" class="md-nav__link">
+      Firebase
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-6" type="checkbox" id="nav-2-6">
+    
+    <label class="md-nav__link" for="nav-2-6">
+      Git
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Git" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-6">
+        <span class="md-nav__icon md-icon"></span>
+        Git
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../git/intro/" title="The World of Linux" class="md-nav__link">
+      The World of Linux
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-7" type="checkbox" id="nav-2-7">
+    
+    <label class="md-nav__link" for="nav-2-7">
+      Kotlin
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Kotlin" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-7">
+        <span class="md-nav__icon md-icon"></span>
+        Kotlin
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kotlin/intro/" title="KOTLIN" class="md-nav__link">
+      KOTLIN
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-8" type="checkbox" id="nav-2-8">
+    
+    <label class="md-nav__link" for="nav-2-8">
+      Misc
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Misc" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-8">
+        <span class="md-nav__icon md-icon"></span>
+        Misc
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../misc/daily_logs/" title="Daily Logs" class="md-nav__link">
+      Daily Logs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../misc/debugging_basics/" title="Debugging basics" class="md-nav__link">
+      Debugging basics
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../misc/git/" title="Miscallanous :Git and github" class="md-nav__link">
+      Miscallanous :Git and github
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-9" type="checkbox" id="nav-2-9">
+    
+    <label class="md-nav__link" for="nav-2-9">
+      Web
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Web" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-9">
+        <span class="md-nav__icon md-icon"></span>
+        Web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-9-1" type="checkbox" id="nav-2-9-1">
+    
+    <label class="md-nav__link" for="nav-2-9-1">
+      Mkdocs
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Mkdocs" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-9-1">
+        <span class="md-nav__icon md-icon"></span>
+        Mkdocs
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web/mkdocs/basic_syntax/" title="Basic Syntax" class="md-nav__link">
+      Basic Syntax
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Tab edu
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Tab edu" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Tab edu
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../tab_edu/edu_details/" title="Education details" class="md-nav__link">
+      Education details
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Tab projects
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Tab projects" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Tab projects
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../tab_projects/project_summary/" title="Project summary" class="md-nav__link">
+      Project summary
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Tab work exp
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Tab work exp" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Tab work exp
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../tab_work_exp/work_exp/" title="Work Experience" class="md-nav__link">
+      Work Experience
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#steps-to-implement" class="md-nav__link">
+    Steps to implement
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-bare-minimmums" class="md-nav__link">
+    the Bare Minimmums.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extras" class="md-nav__link">
+    Extras
+  </a>
+  
+    <nav class="md-nav" aria-label="Extras">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exo-resources" class="md-nav__link">
+    exo resources :
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-exo-player-resources" class="md-nav__link">
+    non exo player resources
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="exoplayer">Exoplayer</h1>
+<p>17/9/19  </p>
+<p>A good video player library for implementing A decent video player in your app, coz the other option of video_view from the default android sdk is less useful  </p>
+<h2 id="steps-to-implement">Steps to implement</h2>
+<ol>
+<li>Add Exoplayer library : Which is actually a group of 6-7 individual libraries having a jillion files.  </li>
+</ol>
+<div class="highlight"><pre><span></span><code>    implementation &#39;com.google.android.exoplayer:exoplayer:2.10.4&#39;
+</code></pre></div>
+
+<p>adding this would add fucking <a href="../exoplayer_classes/">800 classes</a> of this massive library. So let us see what it has to offer.  </p>
+<p><strong>Some basic Details.</strong>  </p>
+<p>The library has the following modules. Adding a dependency to the full ExoPlayer library is equivalent to adding dependencies on all of the library modules individually:  </p>
+<div class="highlight"><pre><span></span><code><span class="err">-</span> <span class="err">exoplayer-core:</span> <span class="err">Core</span> <span class="err">functionality</span> <span class="err">(required).</span>
+<span class="err">-</span> <span class="err">exoplayer-dash:</span> <span class="err">Support</span> <span class="err">for</span> <span class="err">DASH</span> <span class="err">content.</span>
+<span class="err">-</span> <span class="err">exoplayer-hls:</span> <span class="err">Support</span> <span class="err">for</span> <span class="err">HLS</span> <span class="err">content.</span>
+<span class="err">-</span> <span class="err">exoplayer-smoothstreaming:</span> <span class="err">Support</span> <span class="err">for</span> <span class="err">SmoothStreaming</span> <span class="err">content.</span>
+<span class="err">-</span> <span class="err">exoplayer-ui:</span> <span class="err">UI</span> <span class="err">components</span> <span class="err">and</span> <span class="err">resources</span> <span class="err">for</span> <span class="err">use</span> <span class="err">with</span> <span class="err">ExoPlayer.</span>
+</code></pre></div>
+
+<p>In addition to library modules, ExoPlayer has multiple extension modules that depend on external libraries to provide additional functionality. Browse the extensions directory(https://github.com/google/ExoPlayer/tree/release-v2/extensions/) and their individual READMEs for details.
+Also java 8 support is compulsory for this library.  </p>
+<h2 id="the-bare-minimmums">the Bare Minimmums.</h2>
+<p>The smallest code that we need to implement would be:  </p>
+<div class="highlight"><pre><span></span><code>     <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">...</span>
+
+        <span class="n">Context</span> <span class="n">ctx</span> <span class="o">=</span><span class="k">this</span><span class="p">;</span>
+        <span class="n">String</span> <span class="n">CONTENT_URL</span> <span class="o">=</span> <span class="s">&quot;https://www.radiantmediaplayer.com/media/bbb-360p.mp4&quot;</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">playerID</span><span class="o">=</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">pv_main</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">appNameStringRes</span> <span class="o">=</span> <span class="n">R</span><span class="p">.</span><span class="na">string</span><span class="p">.</span><span class="na">app_name</span><span class="p">;</span>
+        <span class="n">startPlayingVideo</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="n">CONTENT_URL</span><span class="p">,</span><span class="n">playerID</span><span class="p">,</span><span class="n">appNameStringRes</span><span class="p">);</span>
+
+    <span class="p">}</span>
+
+    <span class="c1">//</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">startPlayingVideo</span><span class="p">(</span><span class="n">Context</span> <span class="n">ctx</span> <span class="p">,</span> <span class="n">String</span> <span class="n">CONTENT_URL</span><span class="p">,</span> <span class="kt">int</span> <span class="n">playerID</span><span class="p">,</span> <span class="n">String</span> <span class="n">appNameRes</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="n">PlayerView</span> <span class="n">pvMain</span> <span class="o">=</span> <span class="n">ctx</span><span class="p">.</span><span class="na">findViewById</span><span class="p">(</span><span class="n">playerID</span><span class="p">);</span>
+
+        <span class="c1">//BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();</span>
+        <span class="c1">//TrackSelection.Factory videoTrackSelectionFactory = new AdaptiveTrackSelection.Factory(bandwidthMeter);        </span>
+        <span class="c1">//TrackSelector trackSelectorDef = new DefaultTrackSelector(videoTrackSelectionFactory);</span>
+        <span class="n">TrackSelector</span> <span class="n">trackSelectorDef</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultTrackSelector</span><span class="p">();</span>
+
+        <span class="n">SimpleExoPlayer</span> <span class="n">absPlayerInternal</span> <span class="o">=</span> <span class="n">ExoPlayerFactory</span><span class="p">.</span><span class="na">newSimpleInstance</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">trackSelectorDef</span><span class="p">);</span>
+
+        <span class="n">String</span> <span class="n">userAgent</span> <span class="o">=</span> <span class="n">Util</span><span class="p">.</span><span class="na">getUserAgent</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">ctx</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="n">appNameRes</span><span class="p">));</span>
+
+        <span class="n">DefaultDataSourceFactory</span> <span class="n">defdataSourceFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultDataSourceFactory</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span><span class="n">userAgent</span><span class="p">);</span>
+        <span class="n">Uri</span> <span class="n">uriOfContentUrl</span> <span class="o">=</span> <span class="n">Uri</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">CONTENT_URL</span><span class="p">);</span>
+        <span class="n">MediaSource</span> <span class="n">mediaSource</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ProgressiveMediaSource</span><span class="p">.</span><span class="na">Factory</span><span class="p">(</span><span class="n">defdataSourceFactory</span><span class="p">).</span><span class="na">createMediaSource</span><span class="p">(</span><span class="n">uriOfContentUrl</span><span class="p">);</span>
+
+        <span class="n">absPlayerInternal</span><span class="p">.</span><span class="na">prepare</span><span class="p">(</span><span class="n">mediaSource</span><span class="p">);</span>
+        <span class="n">absPlayerInternal</span><span class="p">.</span><span class="na">setPlayWhenReady</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+
+        <span class="n">pvMain</span><span class="p">.</span><span class="na">setPlayer</span><span class="p">(</span><span class="n">absPlayerInternal</span><span class="p">);</span>
+
+    <span class="p">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">stopPlayer</span><span class="p">(</span><span class="n">PlayerView</span> <span class="n">pv</span><span class="p">,</span><span class="n">SimpleExoPlayer</span> <span class="n">absPlayer</span><span class="p">){</span>
+        <span class="n">pv</span><span class="p">.</span><span class="na">setPlayer</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+        <span class="n">absPlayer</span><span class="p">.</span><span class="na">release</span><span class="p">();</span>
+        <span class="n">absPlayer</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div>
+
+<p>How this works?  </p>
+<ul>
+<li>We add a <code>PlayerView</code> widget in our xml and refer its instance in java.  </li>
+<li>Then we attach an instance of <code>SimpleExoPlayer</code> to it , which will handle all downloading, decoding and rendering of video.  </li>
+</ul>
+<p><strong>In More Details, but with a tiny off topic context:</strong>   </p>
+<p>Suppose I am the creator of baby shark video song. I have made this large 48 mb sized HD, bluray video and uploaded it to my fast, responsive,hypothetical aws server.<br />
+I want the an app which is able to fetch this video into user's mobile without downloading it on their mobiles.  </p>
+<p>This is what I call <strong>static streaming*<em> . </em></strong>The video player is supposed to download some small chunks(Say, 2-12 second of a video at a time) of video one by one, at real time and show it to the users on the spot.***  </p>
+<p><strong>But</strong> The biggest problem with streaming is connectivity. Their are mobile users with super fast internet speeds, users with fluctuating speeds and users with terribly ugly internet speeds. Even though a 6 sec HD video would be just 700-800 KB data, it might take 4-5 seconds for a user with poor connection.  </p>
+<p>So exo player has this <code>TrackSelector</code> class, that is  responsible for <strong>choosing which file chunks to download based on perceived bandwidth changes.</strong>  </p>
+<p>So, for eg, if a high quality chunk would take too long to download, the TrackSelector will choose something of lower quality to show the user. And since each chunk is usually about 2 to 12 seconds long, it’s not  bad if the user gets a lower quality chunk of media once in while for the benefit of a smooth experience.  </p>
+<p>It Uses <code>BandwidthMeter</code> class to get user's current bandwidth speeds  and a bunch of  other classes nd factories to create different tracks of video stream chuncks or packets of different sizes and qualities.  </p>
+<p>(Later we will expand more on this: what are tracks, how tracks are created, track selection and creators, How it interacts with <code>absPlayerInstance</code> etc ).  </p>
+<blockquote>
+<p><em>So, to summarise, TrackSelector basically makes a setting in our exoplayer environment to download either  high quality HD packets(i.e a complete packet) or low quality 144p or 360p packets(or optimised/compressed/low quality version of a packet) from a stream usually on the basis of user's Internet Connection Bandwidth and/or other factors.</em>   </p>
+</blockquote>
+<hr />
+<p>Using this track selector we can create an almost ready to run ExoPlayer instance. Let's look into <strong><code>SimpleExoPlayer</code></strong>.  </p>
+<p>At the core of the ExoPlayer library is the <strong><code>Player</code></strong> interface. This is the most powerful interface as it has definations for functions like:  </p>
+<ul>
+<li>
+<p><code>isPlayingAd()</code>: weather the player is playing an ad or not.  </p>
+</li>
+<li>
+<p><code>getCurrentAdGroupIndex()</code> : index of current ad group(if ad is being played)  </p>
+</li>
+<li>
+<p><code>getCurrentAdIndexInAdGroup()</code> : index of current ad in current ad group(if ad is being played)  </p>
+</li>
+<li>
+<p><code>getContentDuration()</code> : returns either the total duration of contents(+ the ads) or <code>C.TIME_UNSET</code> (a constant indicating remaining time is unknown)  </p>
+</li>
+<li>
+<p><code>getContentPosition()</code> : position of content from where it will be resumed playing after ads are finished. (if ads aren't playing, will simply return same as <code>getPosition()</code>)  </p>
+</li>
+<li>
+<p><code>getContentBufferedPosition()</code> : returns an estimate of the content position in the current content window up to which data is buffered, in milliseconds.(if ads aren't playing, will simply return same as <code>getBufferedPosition()</code>)  </p>
+</li>
+<li>
+<p>get/setVolume()  </p>
+</li>
+<li>
+<p>getAudioComponent(),getVideoComponent(),MetaDataComponent() // not exactly what you are thinking  </p>
+</li>
+<li>
+<p>add/remove audio/videoListener  </p>
+</li>
+<li>
+<p>addEventListener(),addErrorListener  </p>
+</li>
+<li>
+<p>setPlayWhenRead()/ setRepeatMode()/ seekTo()/ stop()/reset()/ isLoading()/release()  </p>
+</li>
+<li>
+<p>getCurrentTrackGroups/getTrackSelections()/geTCurrentManifest()  </p>
+</li>
+<li>
+<p>setPlayBackParams() //like speed/pith  </p>
+</li>
+</ul>
+<p>Instances can be created through ExoPlayerFactory class.  <code>SimpleExoPlayer</code> instance is a class which implements Player functions. ExoPlayer exposes traditional high-level media player functionality such as getAudioFormat, getCurrentPositon, getDuration, setVolume, seekTo, setPlayWhenReady, stop and much more. Just like I have mentioned before ExoPlayer uses many components to achieve its modularity and customizability. It delegates work to components which have to be injected when we create and prepare an ExoPlayer instance.  </p>
+<p>The next part is specifying a <strong><code>MediaSource</code></strong>. We have assumed that their will be a video on some server that will be continuously sending us data some large chunks of data packages and our track selector and other libs will download small chuncks of it based on user bandwidth.  </p>
+<p>But there is something missing, something incomplete. How is this continuous stream coming?Where is it coming from? why is it coming automatically and continuously?When and how did it started coming? How is it forever running?Why isn't data getting wasted if packet downloading speed is so fast while streaming speed is slow?Can I listen to the packets being received/decoded/...(whatever are the stages before player starts to render it and user sees it)...?   </p>
+<p>These are good questions that will be obviously answered. But let's first work on our assumptions.  </p>
+<ol>
+<li>Our first assumption is very correct: There <strong>IS</strong> some server that has our video loaded in it. So our first task would be to inform our app's video handling environment, i.e the exoplayer about it.  </li>
+</ol>
+<p>A <code>{@link Factory}</code> that produces <code>{@link DefaultDataSource}</code> instances that delegate to <code>* {@link DefaultHttpDataSource}</code>s for non-file/asset/content URIs.  </p>
+<p>Your choice of MediaSource is going to depend on the type of media you're trying to play.In this example, we're going to be playing an MP4, so we're going to use an <code>ProgressiveMediaSource</code> which supports formats  like MP4, MP3, Matroska, and so on.  </p>
+<p>If you wanted to play Dash or HLS or smooth streaming streams, then you would use the corresponding MediaSources for those different formats.  </p>
+<hr />
+<h2 id="extras">Extras</h2>
+<ul>
+<li>Why exoplayer does not support progress listener: <a href="https://github.com/google/ExoPlayer/issues/2090">Link</a> According to them, it's the "client that knows the points at which it wants a position update". What if the client just wants to listen to the video current position updates?  </li>
+</ul>
+<p>Constantly checking getCurrentPosition (e.g. with the help of Timer().scheduleAtFixedRate) is a very inefficient solution. IMHO, it would be great if ExoPlayer had a specialized method for this, somethings like setCurrentPositionListener which the developers could use to get notified about the video position changes.  </p>
+<p>Since the player manages its own getCurrentPosition property it already knows when to emit onPositionChanged events. The client can only use the polling technique for this:  </p>
+<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm">// TrackSelector class</span>
+<span class="cm"> * The component of an {@link ExoPlayer} responsible for selecting tracks to be consumed by each of</span>
+<span class="cm"> * the player&#39;s {@link Renderer}s. The {@link DefaultTrackSelector} implementation should be</span>
+<span class="cm"> * suitable for most use cases.</span>
+<span class="cm"> *</span>
+<span class="cm"> * &lt;h3&gt;Interactions with the player&lt;/h3&gt;</span>
+<span class="cm"> *</span>
+<span class="cm"> * The following interactions occur between the player and its track selector during playback.</span>
+<span class="cm"> *</span>
+<span class="cm"> * &lt;p&gt;</span>
+<span class="cm"> *</span>
+<span class="cm"> * &lt;ul&gt;</span>
+<span class="cm"> *   &lt;li&gt;When the player is created it will initialize the track selector by calling {@link</span>
+<span class="cm"> *       #init(InvalidationListener, BandwidthMeter)}.</span>
+<span class="cm"> *   &lt;li&gt;When the player needs to make a track selection it will call {@link</span>
+<span class="cm"> *       #selectTracks(RendererCapabilities[], TrackGroupArray, MediaPeriodId, Timeline)}. This</span>
+<span class="cm"> *       typically occurs at the start of playback, when the player starts to buffer a new period of</span>
+<span class="cm"> *       the media being played, and when the track selector invalidates its previous selections.</span>
+<span class="cm"> *   &lt;li&gt;The player may perform a track selection well in advance of the selected tracks becoming</span>
+<span class="cm"> *       active, where active is defined to mean that the renderers are actually consuming media</span>
+<span class="cm"> *       corresponding to the selection that was made. For example when playing media containing</span>
+<span class="cm"> *       multiple periods, the track selection for a period is made when the player starts to buffer</span>
+<span class="cm"> *       that period. Hence if the player&#39;s buffering policy is to maintain a 30 second buffer, the</span>
+<span class="cm"> *       selection will occur approximately 30 seconds in advance of it becoming active. In fact the</span>
+<span class="cm"> *       selection may never become active, for example if the user seeks to some other period of</span>
+<span class="cm"> *       the media during the 30 second gap. The player indicates to the track selector when a</span>
+<span class="cm"> *       selection it has previously made becomes active by calling {@link</span>
+<span class="cm"> *       #onSelectionActivated(Object)}.</span>
+<span class="cm"> *   &lt;li&gt;If the track selector wishes to indicate to the player that selections it has previously</span>
+<span class="cm"> *       made are invalid, it can do so by calling {@link</span>
+<span class="cm"> *       InvalidationListener#onTrackSelectionsInvalidated()} on the {@link InvalidationListener}</span>
+<span class="cm"> *       that was passed to {@link #init(InvalidationListener, BandwidthMeter)}. A track selector</span>
+<span class="cm"> *       may wish to do this if its configuration has changed, for example if it now wishes to</span>
+<span class="cm"> *       prefer audio tracks in a particular language. This will trigger the player to make new</span>
+<span class="cm"> *       track selections. Note that the player will have to re-buffer in the case that the new</span>
+<span class="cm"> *       track selection for the currently playing period differs from the one that was invalidated.</span>
+<span class="cm"> * &lt;/ul&gt;</span>
+<span class="cm"> *</span>
+<span class="cm"> * &lt;h3&gt;Renderer configuration&lt;/h3&gt;</span>
+<span class="cm"> *</span>
+<span class="cm"> * The {@link TrackSelectorResult} returned by {@link #selectTracks(RendererCapabilities[],</span>
+<span class="cm"> * TrackGroupArray, MediaPeriodId, Timeline)} contains not only {@link TrackSelection}s for each</span>
+<span class="cm"> * renderer, but also {@link RendererConfiguration}s defining configuration parameters that the</span>
+<span class="cm"> * renderers should apply when consuming the corresponding media. Whilst it may seem counter-</span>
+<span class="cm"> * intuitive for a track selector to also specify renderer configuration information, in practice</span>
+<span class="cm"> * the two are tightly bound together. It may only be possible to play a certain combination tracks</span>
+<span class="cm"> * if the renderers are configured in a particular way. Equally, it may only be possible to</span>
+<span class="cm"> * configure renderers in a particular way if certain tracks are selected. Hence it makes sense to</span>
+<span class="cm"> * determined the track selection and corresponding renderer configurations in a single step.</span>
+<span class="cm"> *</span>
+<span class="cm"> * &lt;h3&gt;Threading model&lt;/h3&gt;</span>
+<span class="cm"> *</span>
+<span class="cm"> * All calls made by the player into the track selector are on the player&#39;s internal playback</span>
+<span class="cm"> * thread. The track selector may call {@link InvalidationListener#onTrackSelectionsInvalidated()}</span>
+<span class="cm"> * from any thread.</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">TrackSelector</span> <span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<hr />
+<ul>
+<li><strong>ProgressiveMediaSource(a class)</strong> extends <strong>BaseMediaSource(a class)</strong> extends <strong>Media Source(an interface)</strong>  </li>
+</ul>
+<hr />
+<p>Some code:  </p>
+<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * Provides one period that loads data from a {@link Uri} and extracted using an {@link Extractor}.</span>
+<span class="cm"> *</span>
+<span class="cm"> * &lt;p&gt;If the possible input stream container formats are known, pass a factory that instantiates</span>
+<span class="cm"> * extractors for them to the constructor. Otherwise, pass a {@link DefaultExtractorsFactory} to use</span>
+<span class="cm"> * the default extractors. When reading a new stream, the first {@link Extractor} in the array of</span>
+<span class="cm"> * extractors created by the factory that returns {@code true} from {@link Extractor#sniff} will be</span>
+<span class="cm"> * used to extract samples from the input stream.</span>
+<span class="cm"> *</span>
+<span class="cm"> * &lt;p&gt;Note that the built-in extractor for FLV streams does not support seeking.</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">ProgressiveMediaSource</span> <span class="kd">extends</span> <span class="n">BaseMediaSource</span>
+    <span class="kd">implements</span> <span class="n">ProgressiveMediaPeriod</span><span class="p">.</span><span class="na">Listener</span> <span class="p">{</span>
+
+
+  <span class="cm">/* Factory for creating instances of ProgressiveMediaSource class, using the extractors provided by {DefaultExtractorsFactory}  (OR something else too, idk). */</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">Factory</span> <span class="kd">implements</span> <span class="n">AdsMediaSource</span><span class="p">.</span><span class="na">MediaSourceFactory</span> <span class="p">{</span>
+      <span class="p">...</span>
+      <span class="p">...</span>
+
+    <span class="kd">public</span> <span class="nf">Factory</span><span class="p">(</span><span class="n">DataSource</span><span class="p">.</span><span class="na">Factory</span> <span class="n">dataSourceFactory</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">(</span><span class="n">dataSourceFactory</span><span class="p">,</span> <span class="k">new</span> <span class="n">DefaultExtractorsFactory</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">....</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Some more code:  </p>
+<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * Base {@link MediaSource} implementation to handle parallel reuse and to keep a list of {@link</span>
+<span class="cm"> * MediaSourceEventListener}s.</span>
+<span class="cm"> *</span>
+<span class="cm"> * &lt;p&gt;Whenever an implementing subclass needs to provide a new timeline and/or manifest, it must</span>
+<span class="cm"> * call {@link #refreshSourceInfo(Timeline, Object)} to notify all listeners.</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">BaseMediaSource</span> <span class="kd">implements</span> <span class="n">MediaSource</span> <span class="p">{</span>
+
+  <span class="kd">private</span> <span class="kd">final</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">SourceInfoRefreshListener</span><span class="o">&gt;</span> <span class="n">sourceInfoListeners</span><span class="p">;</span>
+  <span class="kd">private</span> <span class="kd">final</span> <span class="n">MediaSourceEventListener</span><span class="p">.</span><span class="na">EventDispatcher</span> <span class="n">eventDispatcher</span><span class="p">;</span>
+
+  <span class="nd">@Nullable</span> <span class="kd">private</span> <span class="n">Looper</span> <span class="n">looper</span><span class="p">;</span>
+  <span class="nd">@Nullable</span> <span class="kd">private</span> <span class="n">Timeline</span> <span class="n">timeline</span><span class="p">;</span>
+  <span class="nd">@Nullable</span> <span class="kd">private</span> <span class="n">Object</span> <span class="n">manifest</span><span class="p">;</span>
+
+  <span class="kd">public</span> <span class="nf">BaseMediaSource</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">sourceInfoListeners</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="cm">/* initialCapacity= */</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">eventDispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MediaSourceEventListener</span><span class="p">.</span><span class="na">EventDispatcher</span><span class="p">();</span>
+  <span class="p">}</span>
+</code></pre></div>
+
+<p>Even more code:  </p>
+<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * Defines and provides media to be played by an {@link com.google.android.exoplayer2.ExoPlayer}. A</span>
+<span class="cm"> * MediaSource has two main responsibilities:</span>
+<span class="cm"> *</span>
+<span class="cm"> * &lt;ul&gt;</span>
+<span class="cm"> *   &lt;li&gt;To provide the player with a {@link Timeline} defining the structure of its media, and to</span>
+<span class="cm"> *       provide a new timeline whenever the structure of the media changes. The MediaSource</span>
+<span class="cm"> *       provides these timelines by calling {@link SourceInfoRefreshListener#onSourceInfoRefreshed}</span>
+<span class="cm"> *       on the {@link SourceInfoRefreshListener}s passed to {@link</span>
+<span class="cm"> *       #prepareSource(SourceInfoRefreshListener, TransferListener)}.</span>
+<span class="cm"> *   &lt;li&gt;To provide {@link MediaPeriod} instances for the periods in its timeline. MediaPeriods are</span>
+<span class="cm"> *       obtained by calling {@link #createPeriod(MediaPeriodId, Allocator, long)}, and provide a</span>
+<span class="cm"> *       way for the player to load and read the media.</span>
+<span class="cm"> * &lt;/ul&gt;</span>
+<span class="cm"> *</span>
+<span class="cm"> * All methods are called on the player&#39;s internal playback thread, as described in the {@link</span>
+<span class="cm"> * com.google.android.exoplayer2.ExoPlayer} Javadoc. They should not be called directly from</span>
+<span class="cm"> * application code. Instances can be re-used, but only for one {@link</span>
+<span class="cm"> * com.google.android.exoplayer2.ExoPlayer} instance simultaneously.</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MediaSource</span> <span class="p">{</span>
+
+  <span class="cm">/** Listener for source events. */</span>
+  <span class="kd">interface</span> <span class="nc">SourceInfoRefreshListener</span> <span class="p">{</span>
+
+    <span class="o">/**</span>
+<span class="p">...</span>
+<span class="p">}</span> 
+</code></pre></div>
+
+<hr />
+<h3 id="exo-resources">exo resources :</h3>
+<ol>
+<li>
+<p><a href="https://android.jlelse.eu/streaming-video-on-android-using-exoplayer-3087d604095">https://android.jlelse.eu/streaming-video-on-android-using-exoplayer-3087d604095</a> This guy implements basic streaming but has some content that i haven't yet read.  </p>
+</li>
+<li>
+<p><a href="https://medium.com/@pawankgupta.se/live-video-streaming-using-exoplayer-2-x-41cc7f9301d6">https://medium.com/@pawankgupta.se/live-video-streaming-using-exoplayer-2-x-41cc7f9301d6</a> basic video rendering using HLS  </p>
+</li>
+<li>
+<p><a href="http://www.tothenew.com/blog/playing-different-videos-with-exo-player-in-android-tv/">http://www.tothenew.com/blog/playing-different-videos-with-exo-player-in-android-tv/</a>  basic exoplayer. might have something new.  </p>
+</li>
+<li>
+<p><a href="https://blog.hotstar.com/when-hotstar-met-exoplayer-5b9ea500bd0">https://blog.hotstar.com/when-hotstar-met-exoplayer-5b9ea500bd0</a> : good theory regarding exo  </p>
+</li>
+<li>
+<p><a href="https://github.com/Tubitv/TubiPlayer">https://github.com/Tubitv/TubiPlayer</a> : tubi player : a player build around exoplayer  </p>
+</li>
+</ol>
+<h3 id="non-exo-player-resources">non exo player resources</h3>
+<p>Good article on how video straming woks :<br />
+  1. <a href="https://www.swipetips.com/android-video-streaming-videoview-tutorial/ video view streaming">https://www.swipetips.com/android-video-streaming-videoview-tutorial/ video view streaming</a>  </p>
+<ol>
+<li>
+<p><a href="https://instagram-engineering.com/improving-video-playback-on-android-2f6c6a0058d">https://instagram-engineering.com/improving-video-playback-on-android-2f6c6a0058d</a>  </p>
+</li>
+<li>
+<p><a href="https://medium.com/@onix_systems/rtmp-protocol-enable-instant-video-streaming-for-android-apps-44cd9de6f339">https://medium.com/@onix_systems/rtmp-protocol-enable-instant-video-streaming-for-android-apps-44cd9de6f339  </a>  </p>
+</li>
+<li>
+<p><a href="http://www.tothenew.com/blog/adaptive-video-streaming-hls/ very good theory">http://www.tothenew.com/blog/adaptive-video-streaming-hls/ very good theory</a>  </p>
+</li>
+<li>
+<p><a href="https://medium.com/p/cddc0b1bf764/responses/show">https://medium.com/p/cddc0b1bf764/responses/show</a>(bad , promotional content, but good theory) </p>
+</li>
+<li>
+<p><a href="https://medium.com/@judeosby/creating-a-video-streaming-app-in-android-using-mvvm-rxjava-pagination-library-and-the-normal-e7b120653d19">https://medium.com/@judeosby/creating-a-video-streaming-app-in-android-using-mvvm-rxjava-pagination-library-and-the-normal-e7b120653d19</a>  (good, practical one with github/open source use cases uses deprecated bvp <a href="https://github.com/halilozercan/BetterVideoPlayer">player</a> )  </p>
+</li>
+<li>
+<p><a href="https://www.streamingmedia.com/Default.aspx">https://www.streamingmedia.com/Default.aspx</a> website on streaming.  </p>
+</li>
+<li>
+<p><a href="https://imagen.io/resources/what-are-svod-tvod-avod/">https://imagen.io/resources/what-are-svod-tvod-avod/</a> : VOD business  </p>
+</li>
+<li>
+<p>jw player : they have implemented everything we want.</p>
+</li>
+</ol>
+                
+              
+              
+                
+
+
+  <h2 id="__comments">Comments</h2>
+  <div id="disqus_thread"></div>
+  <script>var disqus_config=function(){this.page.url="https://root-ansh.github.io/curioustools/tab_blogs/android/exoplayer_p1/",this.page.identifier="tab_blogs/android/exoplayer_p1/"};window.addEventListener("load",function(){var e=document,i=e.createElement("script");i.src="//curioustools.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)})</script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../exoplayer_classes/" title="Exoplayer classes" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Exoplayer classes
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../misc_random_learnings/" title="Miscallanous : Random learnings in android" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Miscallanous : Random learnings in android
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 <a href="https://www.linkedin.com/in/anshsachdevaprofessional/">Ansh Sachdeva</a>
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/root-ansh" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://twitter.com/root_ansh" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://www.linkedin.com/in/anshsachdevawork/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.77e55a48.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.aa3f9871.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
