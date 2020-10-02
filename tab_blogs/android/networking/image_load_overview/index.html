@@ -1,0 +1,1515 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Google certified Associate Android Dev">
+      
+      
+        <link rel="canonical" href="https://root-ansh.github.io/curioustools/tab_blogs/android/networking/image_load_overview/">
+      
+      
+        <meta name="author" content="Ansh Sachdeva(root-ansh)">
+      
+      <link rel="shortcut icon" href="../../../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.0.1">
+    
+    
+      
+        <title>Image Downloading - Curioustools</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.38780c08.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.3f72e892.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="green">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#networking-basics-image-loading" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://root-ansh.github.io/curioustools/" title="Curioustools" class="md-header-nav__button md-logo" aria-label="Curioustools">
+      
+  <img src="../../../../assets/logo/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Curioustools
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Image Downloading
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../../../.." class="md-tabs__link">
+        About Me
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../../tab_edu/edu_details/" class="md-tabs__link">
+          Education Details
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../../tab_work_exp/work_exp/" class="md-tabs__link">
+          Work Experience
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../../tab_projects/project_summary/" class="md-tabs__link">
+          Portfolio
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../blog_summary/" class="md-tabs__link md-tabs__link--active">
+          Notes
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://root-ansh.github.io/curioustools/" title="Curioustools" class="md-nav__button md-logo" aria-label="Curioustools">
+      
+  <img src="../../../../assets/logo/logo.svg" alt="logo">
+
+    </a>
+    Curioustools
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../.." title="About Me" class="md-nav__link">
+      About Me
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Education Details
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Education Details" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Education Details
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../tab_edu/edu_details/" title="Education Details" class="md-nav__link">
+      Education Details
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Work Experience
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Work Experience" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Work Experience
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../tab_work_exp/work_exp/" title="Work Experience" class="md-nav__link">
+      Work Experience
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Portfolio
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Portfolio" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Portfolio
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../tab_projects/project_summary/" title="Portfolio" class="md-nav__link">
+      Portfolio
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      Notes
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Notes" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Notes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../blog_summary/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2" checked>
+    
+    <label class="md-nav__link" for="nav-5-2">
+      Android
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Android" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        <span class="md-nav__icon md-icon"></span>
+        Android
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-2-1" type="checkbox" id="nav-5-2-1">
+    
+    <label class="md-nav__link" for="nav-5-2-1">
+      Basics
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Basics" data-md-level="3">
+      <label class="md-nav__title" for="nav-5-2-1">
+        <span class="md-nav__icon md-icon"></span>
+        Basics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-2-1-1" type="checkbox" id="nav-5-2-1-1">
+    
+    <label class="md-nav__link" for="nav-5-2-1-1">
+      Android Fundamentals
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Android Fundamentals" data-md-level="4">
+      <label class="md-nav__title" for="nav-5-2-1-1">
+        <span class="md-nav__icon md-icon"></span>
+        Android Fundamentals
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../basics/af1_the_architecture/" title="Part1, The Architecture" class="md-nav__link">
+      Part1, The Architecture
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../basics/af2_parts_of_an_app/" title="Part2, Parts of an App(inc)" class="md-nav__link">
+      Part2, Parts of an App(inc)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-2-2" type="checkbox" id="nav-5-2-2">
+    
+    <label class="md-nav__link" for="nav-5-2-2">
+      MobileAds
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="MobileAds" data-md-level="3">
+      <label class="md-nav__title" for="nav-5-2-2">
+        <span class="md-nav__icon md-icon"></span>
+        MobileAds
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../mobile_ads_1/" title="The World of mobile ads (Part1)" class="md-nav__link">
+      The World of mobile ads (Part1)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-2-3" type="checkbox" id="nav-5-2-3">
+    
+    <label class="md-nav__link" for="nav-5-2-3">
+      Firebase
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Firebase" data-md-level="3">
+      <label class="md-nav__title" for="nav-5-2-3">
+        <span class="md-nav__icon md-icon"></span>
+        Firebase
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../firebase/RealtimeDb/" title="Realtime DB" class="md-nav__link">
+      Realtime DB
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-2-4" type="checkbox" id="nav-5-2-4" checked>
+    
+    <label class="md-nav__link" for="nav-5-2-4">
+      Networking
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Networking" data-md-level="3">
+      <label class="md-nav__title" for="nav-5-2-4">
+        <span class="md-nav__icon md-icon"></span>
+        Networking
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-2-4-1" type="checkbox" id="nav-5-2-4-1">
+    
+    <label class="md-nav__link" for="nav-5-2-4-1">
+      GetPost
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="GetPost" data-md-level="4">
+      <label class="md-nav__title" for="nav-5-2-4-1">
+        <span class="md-nav__icon md-icon"></span>
+        GetPost
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../networking_get_post_basics/" title="Part1, basics" class="md-nav__link">
+      Part1, basics
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../networking_get_post_native/" title="Part2, The native way" class="md-nav__link">
+      Part2, The native way
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../networking_get_post_volley/" title="Part3, Volley" class="md-nav__link">
+      Part3, Volley
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../networking_get_post_okhttp/" title="Part4, OkHttp" class="md-nav__link">
+      Part4, OkHttp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../networking_get_post_gson/" title="Part4.1, GSON" class="md-nav__link">
+      Part4.1, GSON
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../networking_get_post_retrofit/" title="Part5, Retrofit" class="md-nav__link">
+      Part5, Retrofit
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Image Downloading
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" title="Image Downloading" class="md-nav__link md-nav__link--active">
+      Image Downloading
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#glide" class="md-nav__link">
+    Glide
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#picasso" class="md-nav__link">
+    Picasso
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fresco" class="md-nav__link">
+    Fresco
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extras" class="md-nav__link">
+    Extras:
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://codinginfinite.com/facebook-shimmer-effect-android-example/" title="Shimmer and progress(inc)⏏" class="md-nav__link">
+      Shimmer and progress(inc)⏏
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-2-5" type="checkbox" id="nav-5-2-5">
+    
+    <label class="md-nav__link" for="nav-5-2-5">
+      VideoPlayer
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="VideoPlayer" data-md-level="3">
+      <label class="md-nav__title" for="nav-5-2-5">
+        <span class="md-nav__icon md-icon"></span>
+        VideoPlayer
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../exoplayer_p1/" title="Exoplayer" class="md-nav__link">
+      Exoplayer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-2-6" type="checkbox" id="nav-5-2-6">
+    
+    <label class="md-nav__link" for="nav-5-2-6">
+      ZZZ_Misc
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="ZZZ_Misc" data-md-level="3">
+      <label class="md-nav__title" for="nav-5-2-6">
+        <span class="md-nav__icon md-icon"></span>
+        ZZZ_Misc
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../android_studio_settings/" title="Fasting Up Android Studio" class="md-nav__link">
+      Fasting Up Android Studio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../enums_and_intDefs/" title="Enums and @IntDefs" class="md-nav__link">
+      Enums and @IntDefs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/debugging_basics/" title="Debugging basics" class="md-nav__link">
+      Debugging basics
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Kotlin
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Kotlin" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        <span class="md-nav__icon md-icon"></span>
+        Kotlin
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../kotlin/intro/" title="Intro" class="md-nav__link">
+      Intro
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://docs.google.com/document/d/11-pLCn_f7aYuah22_XoBvGs_T3BHyh36vrq-3sCplWU/edit?usp=sharing" title="Hello Kotlin⏏" class="md-nav__link">
+      Hello Kotlin⏏
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://docs.google.com/document/d/1EQL9BGWNtX6u3EU4ETkfMVjlDqyurRU-4lBU-Z9WOzE/edit?usp=sharing" title="Installing Kotlin⏏" class="md-nav__link">
+      Installing Kotlin⏏
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://docs.google.com/document/d/1ZKZcyGYruaPIRJzqqN1jmN-aZmXUM5VJ_bh91amOmGM/edit?usp=sharing" title="Basic Syntax ⏏" class="md-nav__link">
+      Basic Syntax ⏏
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://drive.google.com/file/d/1uwJAMBusJ6IRo6M1g_n3ggRLbNj2dLtL/view?usp=sharing" title="OOPS ⏏" class="md-nav__link">
+      OOPS ⏏
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://drive.google.com/file/d/1VhV0ZD2qeZSEZzd3qp1_0ZO5AH9lu8XA/view?usp=sharing" title="OOPS Continued ⏏" class="md-nav__link">
+      OOPS Continued ⏏
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://drive.google.com/file/d/11SgtbswHAwc9N82GQ1ET1Pazh11WD5hf/view?usp=sharing" title="Scopes and nullability ⏏" class="md-nav__link">
+      Scopes and nullability ⏏
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4">
+    
+    <label class="md-nav__link" for="nav-5-4">
+      Git
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Git" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        <span class="md-nav__icon md-icon"></span>
+        Git
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../git/intro/" title="Introduction(inc)" class="md-nav__link">
+      Introduction(inc)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5">
+    
+    <label class="md-nav__link" for="nav-5-5">
+      Web
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Web" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        <span class="md-nav__icon md-icon"></span>
+        Web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../web/mkdocs/basic_syntax/" title="Mkdocs" class="md-nav__link">
+      Mkdocs
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6">
+    
+    <label class="md-nav__link" for="nav-5-6">
+      Google Assistant and AI
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Google Assistant and AI" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        <span class="md-nav__icon md-icon"></span>
+        Google Assistant and AI
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../assistant/404/" title="Introduction(inc)" class="md-nav__link">
+      Introduction(inc)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-7" type="checkbox" id="nav-5-7">
+    
+    <label class="md-nav__link" for="nav-5-7">
+      BlockChain
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="BlockChain" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-7">
+        <span class="md-nav__icon md-icon"></span>
+        BlockChain
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../blockchain/public_and_private_key/" title="Public and Private Keys" class="md-nav__link">
+      Public and Private Keys
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://www.medium.com/@anshsachdevaprofessional/" title="Other Blogs⏏" class="md-nav__link">
+      Other Blogs⏏
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://curioustools.blogspot.com/" title="Other Blogs2⏏" class="md-nav__link">
+      Other Blogs2⏏
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://www.reddit.com/r/curioustools/" title="Other Blogs3(NEW)⏏" class="md-nav__link">
+      Other Blogs3(NEW)⏏
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#glide" class="md-nav__link">
+    Glide
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#picasso" class="md-nav__link">
+    Picasso
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fresco" class="md-nav__link">
+    Fresco
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extras" class="md-nav__link">
+    Extras:
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="networking-basics-image-loading">Networking Basics : Image Loading</h1>
+<p>As we saw in networking , there are a no. of concepts involved, like downloading the reponse , parsing reponse handling background thread, keeping this object alive, etc.  </p>
+<p>Image downloading is similar , except the fact that use case of image are a lot.  </p>
+<ul>
+<li>Image could be used as background and needs to be loaded as fast as possible</li>
+<li>Image could be used in list as profile pic or contact imagge, and needs to be loaded on demand/ on click + cached so that multiple network calls does not happen  </li>
+<li>
+<p>Shimmer/Loading Blur/placeholder effect could be expected from images while being loaded   </p>
+</li>
+<li>
+<p>gif support could be required  </p>
+</li>
+<li>transformations like streching the image, contracting the image, resizing the image, rotation of image, cropping of image, etc could be expected from the downloader.  </li>
+<li>and many more.  </li>
+</ul>
+<p>The natie code for a basic image loading is again large, but simple. However the implicity is limited to that only. For anything advance, the code grows and gets more complicated/inefficient. That's where Libraries thrive. <br />
+There are many libraries, but I have used only Glide and Picasso for most of my needs. you can check <a href="https://ourcodeworld.com/articles/read/929/top-10-best-android-image-loading-and-caching-libraries">this link</a>  for more info.  </p>
+<p>Let's check some of them.  </p>
+<h2 id="glide">Glide</h2>
+<p>Glide is developed by bumptech and its one of the most popular mage library out there, i mean you can not expect less from a product recommended by Google, its currently in version 4.0.0. Glide is about 476 kb in size and has a method count of 2879.  </p>
+<p>To use it you will have to add the this your project dependency:  </p>
+<div class="highlight"><pre><span></span><code>compile &#39;com.github.bumptech.glide:glide:3.7.0&#39;
+</code></pre></div>
+
+<p>Getting started with glide is as easy as follows  </p>
+<div class="highlight"><pre><span></span><code>Glide
+    .with(mContext)
+    .load(img_url)
+    .centerCrop()
+    .placeholder(R.drawable.loading_spinner)
+    .into(mImageView);
+</code></pre></div>
+
+<p>Additional configuration for glide:  </p>
+<div class="highlight"><pre><span></span><code>.error(Image_uri); this is the image shown in case of error
+.fitcenter(); this makes the image to be centered in the imageView
+.centerCrop()
+.fades()
+.transform()
+.fetch()
+</code></pre></div>
+
+<p><strong>Pros</strong>  </p>
+<ul>
+<li>Very easy to use.  </li>
+<li>it support gif loading.  </li>
+<li>it requires little configuration.  </li>
+<li>its been actively maintained.  </li>
+<li>it download image with the Size of the view been loaded into, this will reduce time and computation required to display the image.  </li>
+</ul>
+<p><strong>Cons</strong>  </p>
+<ul>
+<li>its kind of large in terms of size and memory.  </li>
+<li>it requires large amount of caching space cause it saves different sizes of image separately.  </li>
+</ul>
+<hr />
+<h2 id="picasso">Picasso</h2>
+<p>Picasso is named after the Spanish artist Pablo Picasso and its developed by square. its uses Fluent Api just like Glide, this library is not only powerful and fast but also very light in weight, its 121 kb in size with a total method count of 849. its currently in it version 2.5.2.  </p>
+<p>To use Picasso in your project add the this to your dependency<br />
+<div class="highlight"><pre><span></span><code>compile &#39;com.squareup.picasso:picasso:2.5.2&#39;
+</code></pre></div></p>
+<p>Using Picasso is very easy too  </p>
+<div class="highlight"><pre><span></span><code>Picasso
+   .with(mContext)
+   .load(img_url)//insert the image url
+   .placeholder(R.drawable.user_image)
+   .into(mImageView);
+</code></pre></div>
+
+<p>Additional configurations  </p>
+<div class="highlight"><pre><span></span><code>.rotate(float degree)
+.resize(int height,int breath)
+.fade()
+.transform(Transformation trans)
+.centerCrop
+.fit()
+</code></pre></div>
+
+<p><strong>Pros</strong>  </p>
+<ul>
+<li>Small size and method count</li>
+<li>very easy to use</li>
+<li>little configuration to set up</li>
+<li>very easy to configure with the builder class  </li>
+</ul>
+<p><strong>Cons</strong>  </p>
+<ul>
+<li>it cannot load gif  </li>
+<li>it cannot be used to load a very large file  </li>
+<li>it download and cache the the original image which will be re-sized to the view its been loaded to, this is an additonal computation at display time.  </li>
+</ul>
+<h2 id="fresco">Fresco</h2>
+<p>This is developed by Facebook, its built to present the best optimization for image loading and processing, when you have over one billion user to tend to, you cant possibly settle for less. As the popular adage has it “with greater power comes greater resposibility”, Fresco is freaking 1.6mb and has a method count of 5714 thats huge if you are working against the 64k method count.  </p>
+<p>Getting started with Fresco<br />
+<div class="highlight"><pre><span></span><code>compile &#39;com.facebook.fresco:fresco:1.3.0&#39;
+</code></pre></div></p>
+<p>You will use the custom view SimpleDraweeView instead of imageView  </p>
+<div class="highlight"><pre><span></span><code>&lt;com.facebook.drawee.view.SimpleDraweeView
+    android:id=&quot;@+id/my_image_view&quot;
+    android:layout_width=&quot;130dp&quot;
+    android:layout_height=&quot;130dp&quot;
+    fresco:placeholderImage=&quot;@drawable/my_drawable&quot;
+  /&gt;
+</code></pre></div>
+
+<p>Then you just specify the image url:  </p>
+<div class="highlight"><pre><span></span><code>Uri uri = Uri.parse(image_url);
+draweeView = (SimpleDraweeView) findViewById(R.id.my_image_view);
+draweeView.setImageURI(uri);
+</code></pre></div>
+
+<p><strong>pros</strong>  </p>
+<ul>
+<li>its has a custom view for its configuration, which makes it very easy to use  </li>
+<li>its well optimized in terms of memory usage and allocation  </li>
+<li>its has a lot of configuration option  </li>
+<li>its has a very verbose documentation  </li>
+<li>its easy to configure  </li>
+<li>its load progressive JPEG,webP, gif  </li>
+<li>it does not require alot configuration to get started  </li>
+</ul>
+<p><strong>Cons</strong>  </p>
+<ul>
+<li>its very large  </li>
+<li>its documentation are kind of complicated   </li>
+</ul>
+<hr />
+<h2 id="extras">Extras:</h2>
+<p><strong>Resources</strong>  </p>
+<ul>
+<li><a href="https://github.com/bumptech/glide">Glide</a>  </li>
+<li><a href="http://square.github.io/picasso/">Picasso</a>  </li>
+<li><a href="http://frescolib.org/docs/getting-started.html">Getting Started with Fresco</a>  </li>
+<li><a href="https://medium.com/@afomic/android-image-processing-libraries-a68e306f58d1">this article i heavily copy from</a>    </li>
+<li><a href="https://stackoverflow.com/questions/29363321/picasso-v-s-imageloader-v-s-fresco-vs-glide">This</a> SO post on glide vs frseco vs picasso vs... everything.  </li>
+<li><a href="https://ourcodeworld.com/articles/read/929/top-10-best-android-image-loading-and-caching-libraries">Other libs</a></li>
+</ul>
+<p><strong>Other Notable Libraries</strong>  </p>
+<ul>
+<li><a href="https://github.com/nostra13/Android-Universal-Image-Loader">Universal Image Loader</a>  </li>
+<li><a href="https://github.com/koush/ion">Ion image loader</a>  </li>
+<li><a href="https://www.truiton.com/2015/03/android-volley-imageloader-networkimageview-example/">Volley Image loader</a></li>
+</ul>
+                
+              
+              
+                
+
+
+  <h2 id="__comments">Comments</h2>
+  <div id="disqus_thread"></div>
+  <script>var disqus_config=function(){this.page.url="https://root-ansh.github.io/curioustools/tab_blogs/android/networking/image_load_overview/",this.page.identifier="tab_blogs/android/networking/image_load_overview/"};window.addEventListener("load",function(){var e=document,i=e.createElement("script");i.src="//curioustools.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)})</script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../networking_get_post_retrofit/" title="Part5, Retrofit" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Part5, Retrofit
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../../exoplayer_p1/" title="Exoplayer" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Exoplayer
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 <a href="https://www.linkedin.com/in/anshsachdevaprofessional/">Ansh Sachdeva</a>
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/root-ansh" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://twitter.com/root_ansh" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://www.linkedin.com/in/anshsachdevawork/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../../assets/javascripts/vendor.77e55a48.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.aa3f9871.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../../..",
+          features: ['navigation.tabs'],
+          search: Object.assign({
+            worker: "../../../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
