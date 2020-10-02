@@ -11,7 +11,7 @@ theme:
         primary: 'white'
         accent: 'green'
 
-    feature:
+    features:
         - navigation.tabs 
  
     language: 'en'    
